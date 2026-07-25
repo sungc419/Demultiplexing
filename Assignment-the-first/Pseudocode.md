@@ -1,0 +1,44 @@
+The goal of Part 2 is to write an algorithm to de-multiplex files and report index-hopping. 
+
+Given 4 input FASTQ files generated from the 2017 BGMP cohort’s library preps(2 with biological reads "R1, R4", 2 with index reads "R2, R3") and the list of 24 known indexes located on Talapas, I will ouput 2 FASTQ files per matching index-pair(R1 and R4 for 24 different index pairs), two FASTQ files with index-hopped reads-pairs(fw vs rv reads), and 2 FASTQ files undetermined index-pairs(those with "Ns"). This should output 52 FASTQ files in total. The algorithm will also report the number of read-pairs with properly matched indexes (per index-pair), the number of read pairs with index-hopping observed (for each hopping combination), and the number of read-pairs with unknown index(es).
+
+
+Using python:
+
+import modules for parsing through files (argparse), viewing zipped files(gzip), bioinfo (containing function for converting Phred scores), matplotlib (for graphing)
+
+set up argparse to take input files
+
+def rev_comp (seq:str) -> str:
+    ''' Takes the dna sequence (string) and returns the reverse complement. Base of N should return N.'''
+    return r_comp
+Input: ACGTN
+Expected output: NACGT
+
+create empty set, storing indexes as keys
+
+create dictionary, to store barcode combinations as keys, and values as the counts of each combo 
+
+open and read each FASTQ file at the same time:
+    use while True to loop though file:
+        store each line per record line to a list, stripping each line
+                if there's N
+                    +=1 in the dict for unknown
+                    and write to appropriate unknown output file (r1 record goes to fw r4 record goes to rv)
+                elif rev_comp(R3) == R2:
+                    +=1 in the dict for that matched combo
+                    and write to appropriate output file
+                else:
+                    +=1 in the dict for that unmatched combo
+                    write to the appropriate output file
+
+
+Close all files
+
+
+Unit tests:
+    assert test to check if rev_comp function correctly returns complement
+    make 4 test files for R1, R2, R3, R4
+
+
+
