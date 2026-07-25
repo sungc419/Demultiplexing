@@ -7,7 +7,7 @@ Using python:
 
 import modules for parsing through files (argparse), viewing zipped files(gzip), bioinfo (containing function for converting Phred scores), matplotlib (for graphing)
 
-set up argparse to take input files
+set up argparse to take input files and set cutoff for quality scores
 
 def rev_comp (seq:str) -> str:
     ''' Takes the dna sequence (string) and returns the reverse complement. Base of N should return N.'''
@@ -22,7 +22,13 @@ create dictionary, to store barcode combinations as keys, and values as the coun
 open and read each FASTQ file at the same time:
     use while True to loop though file:
         store each line per record line to a list, stripping each line
-                if there's N
+                if there's N:
+                    +=1 in the dict for unknown
+                    and write to appropriate unknown output file (r1 record goes to fw r4 record goes to rv)
+                elif R2 or rev_comp(R3) is not in set:
+                    +=1 in the dict for unknown
+                    and write to appropriate unknown output file (r1 record goes to fw r4 record goes to rv)
+                elif bioinfo.qual_score(barcodes) <= cutoff from args:
                     +=1 in the dict for unknown
                     and write to appropriate unknown output file (r1 record goes to fw r4 record goes to rv)
                 elif rev_comp(R3) == R2:
@@ -31,9 +37,6 @@ open and read each FASTQ file at the same time:
                 else:
                     +=1 in the dict for that unmatched combo
                     write to the appropriate output file
-
-
-Close all files
 
 
 Unit tests:
