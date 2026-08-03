@@ -5,11 +5,11 @@
 
 For R1/R4:
 
-[MeanQualityScore_read.py](../MeanQualityScore_read.py)
+[MeanQScore_read.py](../MeanQScore_read.py)
 
 For R2/R3:
 
-[MeanQualityScore_index.py](../MeanQualityScore_index.py)
+[MeanQScore_index.py](../MeanQScore_index.py)
 
 | File name | label | Read length | Phred encoding |
 |---|---|---|---|
