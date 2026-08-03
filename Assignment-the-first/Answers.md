@@ -24,7 +24,7 @@ For R2/R3:
        ![R2](../R2.png) 
        ![R3](../R3.png) 
        ![R4](../R4.png)
-    2. **YOUR ANSWER HERE**
+    2. I think Q20 is a good cutoff score because it will include enough values in the output files without sacrificing accuracy.
     3. ```zcat 1294_S1_L008_R2_001.fastq.gz 1294_S1_L008_R3_001.fastq.gz | awk 'NR%4==2' | grep -c 'N'```
        7304664 indices have undetermined (N) base calls.
     
