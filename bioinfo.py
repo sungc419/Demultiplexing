@@ -73,13 +73,15 @@ def rev_comp(seq: str) -> str:
     rev = seq[::-1]
     comp = "" 
     for base in rev:
+        print(base)
         comp += dna_dict[base] 
     return comp
 
+
 def read_fqrec(fh: TextIO)-> list: 
-    '''Takes 4 FASTQ files'''
+    '''Takes a FASTQ file and stores the 4 lines in each record in a list, stripping newline characters'''
     record = []
-    for i in range (4):
+    for i in range(4):
         record.append(fh.readline().strip())
     return record
 
